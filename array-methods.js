@@ -5,10 +5,10 @@ var dataset = require('./dataset.json');
   greater than 100000
   assign the resulting new array to `hundredThousandairs`
 */
-var hundredThousandairs = null;
-console.log("exercise 1", dataset.bankBalances);
+// var hundredThousandairs = null;
+console.log("exercise 1", dataset.bankBalances[0]);
 
-hundredThousandairs = dataset.bankBalances.filter((element, index, array) => dataset.bankBalances[index].amount > 100000);
+const hundredThousandairs = dataset.bankBalances.filter((element, index, array) => dataset.bankBalances[index].amount > 100000);
 
 /*
   DO NOT MUTATE DATA.
@@ -29,38 +29,89 @@ hundredThousandairs = dataset.bankBalances.filter((element, index, array) => dat
 */
 
 var datasetWithRoundedDollar = null;
-datasetWithRoundedDollar = dataset.bankBalances.slice(0);
-console.log("exercise 2: ", datasetWithRoundedDollar);
-//console.log(dataset.bankBalances);
+// datasetWithRoundedDollar = dataset.bankBalances.slice();
+// console.log("exercise 2: ", datasetWithRoundedDollar[0]);
+// console.log("Orig dataset: ", dataset.bankBalances[0]);
 
-datasetWithRoundedDollar.map((element, index, array) => {
-  datasetWithRoundedDollar[index]["rounded"] = Math.round(datasetWithRoundedDollar[index].amount);
-});
+// datasetWithRoundedDollar.map((element, index, array) => {
+//   datasetWithRoundedDollar[index]["rounded"] = Math.round(datasetWithRoundedDollar[index].amount);
+// });
+// console.log(datasetWithRoundedDollar[0]);
+// console.log("here:", dataset.bankBalances[0]);
+
+
+datasetWithRoundedDollar = dataset.bankBalances.map((element) => {
+  // let newElement = {};
+  // newElement["amount"] = element.amount;
+  // newElement["state"] = element.state;
+  // newElement["rounded"] = Math.round(element.amount);
+  // return newElement;
+
+  // var newElement = JSON.parse(JSON.stringify(element));
+  // newElement["rounded"] = Math.round(element.amount);
+  // return newElement;
+
+  return {
+    amount: element.amount,
+    state: element.state,
+    rounded: Math.round(element.amount)
+  };
+})
+console.log("exercise 2: ", datasetWithRoundedDollar[0]);
 
 /*
-  DO NOT MUTATE DATA.
+DO NOT MUTATE DATA.
 
-  create a new dataset where each bank object is a new object.
-  `amount` and `state` values will be transferred to the new object.
-  This new object is different, you will add one new key of `roundedDime`
+create a new dataset where each bank object is a new object.
+`amount` and `state` values will be transferred to the new object.
+This new object is different, you will add one new key of `roundedDime`
 
-  `roundedDime` value is `amount` rounded to the nearest 10th of a cent
+`roundedDime` value is `amount` rounded to the nearest 10th of a cent
 
-  Example 1
-    {
-      "amount": "134758.46",
-      "state": "HI"
-      "roundedDime": 134758.5
-    }
-  Example 2
-    {
-      "amount": "134758.44",
-      "state": "HI"
-      "roundedDime": 134758.4
-    }
-  assign the resulting new array to `roundedDime`
+Example 1
+{
+  "amount": "134758.46",
+  "state": "HI"
+  "roundedDime": 134758.5
+}
+Example 2
+{
+  "amount": "134758.44",
+  "state": "HI"
+  "roundedDime": 134758.4
+}
+assign the resulting new array to `roundedDime`
 */
+
 var datasetWithRoundedDime = null;
+// console.log(dataset.bankBalances[0]);
+// datasetWithRoundedDime = dataset.bankBalances.slice();
+// console.log("exercise 3: ", datasetWithRoundedDime[0]);
+
+// datasetWithRoundedDime.map((element, index, array) => {
+//   datasetWithRoundedDime[index]["roundedDime"] = Math.round(datasetWithRoundedDime[index].amount * 10) / 10;
+// });
+// console.log(datasetWithRoundedDime[0]);
+
+datasetWithRoundedDime = dataset.bankBalances.map((element) => {
+  // let newElement = {};
+  // newElement["amount"] = element.amount;
+  // newElement["state"] = element.state;
+  // newElement["roundedDime"] = Math.round(element.amount * 10) / 10;
+
+  // let newElement = JSON.parse(JSON.stringify(element));
+  // newElement["roundedDime"] = Math.round(element.amount * 10) / 10;
+  // return newElement;
+  return {
+    amount: element.amount,
+    state: element.state,
+    roundedDime: Math.round(element.amount * 10) / 10
+  };
+})
+console.log("exercise 3: ", datasetWithRoundedDime[0]);
+
+
+
 
 // set sumOfBankBalances to be the sum of all value held at `amount` for each bank object
 var sumOfBankBalances = null;
