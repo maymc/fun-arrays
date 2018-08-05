@@ -5,10 +5,10 @@ var dataset = require('./dataset.json');
   greater than 100000
   assign the resulting new array to `hundredThousandairs`
 */
-// var hundredThousandairs = null;
-console.log("exercise 1", dataset.bankBalances[0]);
+var hundredThousandairs = null;
+console.log("exercise 1: ", dataset.bankBalances[0]);
 
-const hundredThousandairs = dataset.bankBalances.filter((element, index, array) => dataset.bankBalances[index].amount > 100000);
+hundredThousandairs = dataset.bankBalances.filter((element, index, array) => dataset.bankBalances[index].amount > 100000);
 
 /*
   DO NOT MUTATE DATA.
@@ -29,28 +29,20 @@ const hundredThousandairs = dataset.bankBalances.filter((element, index, array) 
 */
 
 var datasetWithRoundedDollar = null;
-// datasetWithRoundedDollar = dataset.bankBalances.slice();
-// console.log("exercise 2: ", datasetWithRoundedDollar[0]);
-// console.log("Orig dataset: ", dataset.bankBalances[0]);
-
-// datasetWithRoundedDollar.map((element, index, array) => {
-//   datasetWithRoundedDollar[index]["rounded"] = Math.round(datasetWithRoundedDollar[index].amount);
-// });
-// console.log(datasetWithRoundedDollar[0]);
-// console.log("here:", dataset.bankBalances[0]);
-
-
 datasetWithRoundedDollar = dataset.bankBalances.map((element) => {
+  //One way to copy the dataset
   // let newElement = {};
   // newElement["amount"] = element.amount;
   // newElement["state"] = element.state;
   // newElement["rounded"] = Math.round(element.amount);
   // return newElement;
 
+  //2nd way to copy the dataset
   // var newElement = JSON.parse(JSON.stringify(element));
   // newElement["rounded"] = Math.round(element.amount);
   // return newElement;
 
+  //3rd method to copy the dataset
   return {
     amount: element.amount,
     state: element.state,
@@ -84,24 +76,19 @@ assign the resulting new array to `roundedDime`
 */
 
 var datasetWithRoundedDime = null;
-// console.log(dataset.bankBalances[0]);
-// datasetWithRoundedDime = dataset.bankBalances.slice();
-// console.log("exercise 3: ", datasetWithRoundedDime[0]);
-
-// datasetWithRoundedDime.map((element, index, array) => {
-//   datasetWithRoundedDime[index]["roundedDime"] = Math.round(datasetWithRoundedDime[index].amount * 10) / 10;
-// });
-// console.log(datasetWithRoundedDime[0]);
-
 datasetWithRoundedDime = dataset.bankBalances.map((element) => {
+  //One way to copy the dataset
   // let newElement = {};
   // newElement["amount"] = element.amount;
   // newElement["state"] = element.state;
   // newElement["roundedDime"] = Math.round(element.amount * 10) / 10;
 
+  //2nd way to copy the dataset
   // let newElement = JSON.parse(JSON.stringify(element));
   // newElement["roundedDime"] = Math.round(element.amount * 10) / 10;
   // return newElement;
+
+  //3rd way to copy the dataset
   return {
     amount: element.amount,
     state: element.state,
@@ -112,9 +99,21 @@ console.log("exercise 3: ", datasetWithRoundedDime[0]);
 
 
 
-
 // set sumOfBankBalances to be the sum of all value held at `amount` for each bank object
 var sumOfBankBalances = null;
+sumOfBankBalances = 0;
+dataset.bankBalances.forEach(element => {
+  console.log(typeof element.amount);
+  sumOfBankBalances += Number(element.amount);
+  sumOfBankBalances = Math.round(sumOfBankBalances * 100) / 100;
+});
+
+
+// for (var i = 0; i < dataset.bankBalances.length; i++) {
+//   sumOfBankBalances += dataset.bankBalances[i].amount;
+
+// }
+// return sumOfBankBalances;
 
 /*
   from each of the following states:
