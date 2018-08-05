@@ -6,12 +6,9 @@ var dataset = require('./dataset.json');
   assign the resulting new array to `hundredThousandairs`
 */
 var hundredThousandairs = null;
-console.log(dataset.bankBalances);
+console.log("exercise 1", dataset.bankBalances);
 
 hundredThousandairs = dataset.bankBalances.filter((element, index, array) => dataset.bankBalances[index].amount > 100000);
-
-
-
 
 /*
   DO NOT MUTATE DATA.
@@ -30,7 +27,15 @@ hundredThousandairs = dataset.bankBalances.filter((element, index, array) => dat
     }
   assign the resulting new array to `datasetWithRoundedDollar`
 */
+
 var datasetWithRoundedDollar = null;
+datasetWithRoundedDollar = dataset.bankBalances.slice(0);
+console.log("exercise 2: ", datasetWithRoundedDollar);
+//console.log(dataset.bankBalances);
+
+datasetWithRoundedDollar.map((element, index, array) => {
+  datasetWithRoundedDollar[index]["rounded"] = Math.round(datasetWithRoundedDollar[index].amount);
+});
 
 /*
   DO NOT MUTATE DATA.
