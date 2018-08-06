@@ -103,17 +103,10 @@ console.log("exercise 3: ", datasetWithRoundedDime[0]);
 var sumOfBankBalances = null;
 sumOfBankBalances = 0;
 dataset.bankBalances.forEach(element => {
-  console.log(typeof element.amount);
   sumOfBankBalances += Number(element.amount);
   sumOfBankBalances = Math.round(sumOfBankBalances * 100) / 100;
 });
 
-
-// for (var i = 0; i < dataset.bankBalances.length; i++) {
-//   sumOfBankBalances += dataset.bankBalances[i].amount;
-
-// }
-// return sumOfBankBalances;
 
 /*
   from each of the following states:
@@ -127,6 +120,67 @@ dataset.bankBalances.forEach(element => {
   and then sum it all up into one value saved to `sumOfInterests`
  */
 var sumOfInterests = null;
+let sumOfWI = 0;
+let sumOfIL = 0;
+let sumOfWY = 0;
+let sumOfOH = 0;
+let sumOfGA = 0;
+let sumOfDE = 0;
+
+// function getStates(element, index, array) {
+//   if (dataset.bankBalances[index].state === "WI" || dataset.bankBalances[index].state === "IL" || dataset.bankBalances[index].state === "WY" || dataset.bankBalances[index].state === "OH" || dataset.bankBalances[index].state === "GA" || dataset.bankBalances[index].state === "DE") {
+//     return element;
+//   }
+// }
+
+// let filteredStates = dataset.bankBalances.filter(getStates);
+// console.log("filtered states: ", filteredStates);
+
+
+dataset.bankBalances.forEach(element => {
+  if (element.state === "WI") {
+    console.log(element);
+    sumOfWI += (Number(element.amount) * 0.189);
+    sumOfWI = Math.round(sumOfWI * 100) / 100;
+    console.log("sumOfWI: ", sumOfWI);
+  }
+  else if (element.state === "IL") {
+    console.log(element);
+    sumOfIL += (Number(element.amount) * 0.189);
+    sumOfIL = Math.round(sumOfIL * 100) / 100;
+    console.log("sumOfIL: ", sumOfIL);
+  }
+  else if (element.state === "WY") {
+    console.log(element);
+    sumOfWY += (Number(element.amount) * 0.189);
+    sumOfWY = Math.round(sumOfWY * 100) / 100;
+    console.log("sumOfWY: ", sumOfWY);
+  }
+  else if (element.state === "OH") {
+    console.log(element);
+    sumOfOH += (Number(element.amount) * 0.189);
+    sumOfOH = Math.round(sumOfOH * 100) / 100;
+    console.log("sumOfOH: ", sumOfOH);
+  }
+  else if (element.state === "GA") {
+    console.log(element);
+    sumOfGA += (Number(element.amount) * 0.189);
+    sumOfGA = Math.round(sumOfGA * 100) / 100;
+    console.log("sumOfGA: ", sumOfGA);
+  }
+  else if (element.state === "DE") {
+    console.log(element);
+    sumOfDE += (Number(element.amount) * 0.189);
+    sumOfDE = Math.round(sumOfDE * 100) / 100;
+    console.log("sumOfDE: ", sumOfDE);
+  }
+
+});
+
+console.log("sums of each state: ", sumOfWI, sumOfIL, sumOfWY, sumOfOH, sumOfGA, sumOfDE)
+  ;
+sumOfInterests = sumOfWI + sumOfIL + sumOfOH + sumOfWY + sumOfDE + sumOfGA;
+console.log("sumOfInterests: ", sumOfInterests);
 
 /*
   aggregate the sum of bankBalance amounts
