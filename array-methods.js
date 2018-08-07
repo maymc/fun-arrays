@@ -199,6 +199,19 @@ console.log("sumOfInterests: ", sumOfInterests);
   )
  */
 var stateSums = null;
+stateSums = {};
+dataset.bankBalances.forEach(element => {
+  if (stateSums.hasOwnProperty(element.state) === false) {
+    stateSums[element.state] = Number(element.amount);
+
+  }
+  else {
+    stateSums[element.state] = Math.round((stateSums[element.state] + Number(element.amount)) * 100) / 100;
+  }
+})
+console.log(stateSums);
+
+
 
 /*
   for all states *NOT* in the following states:
@@ -217,7 +230,19 @@ var stateSums = null;
     round this number to the nearest 10th of a cent before moving on.
   )
  */
+
 var sumOfHighInterests = null;
+// function getOtherStates(element, index, array) {
+//   if (element.state !== "WI" && element.state !== "IL" && element.state !== "WY" && element.state !== "OH" && element.state !== "GA" && element.state !== "DE") {
+//     return element;
+//   }
+// }
+
+// let otherStates = dataset.bankBalances.filter(getOtherStates);
+// console.log("otherStates: ", otherStates);
+
+
+
 
 /*
   set `lowerSumStates` to be an array of two letter state
