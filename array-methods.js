@@ -201,17 +201,14 @@ console.log("sumOfInterests: ", sumOfInterests);
 var stateSums = null;
 stateSums = {};
 dataset.bankBalances.forEach(element => {
-  if (stateSums.hasOwnProperty(element.state) === false) {
+  if (!stateSums.hasOwnProperty(element.state)) {
     stateSums[element.state] = Number(element.amount);
-
   }
   else {
     stateSums[element.state] = Math.round((stateSums[element.state] + Number(element.amount)) * 100) / 100;
   }
 })
 console.log(stateSums);
-
-
 
 /*
   for all states *NOT* in the following states:
@@ -232,14 +229,39 @@ console.log(stateSums);
  */
 
 var sumOfHighInterests = null;
-// function getOtherStates(element, index, array) {
-//   if (element.state !== "WI" && element.state !== "IL" && element.state !== "WY" && element.state !== "OH" && element.state !== "GA" && element.state !== "DE") {
-//     return element;
-//   }
-// }
+sumOfHighInterests = [];
 
-// let otherStates = dataset.bankBalances.filter(getOtherStates);
-// console.log("otherStates: ", otherStates);
+function getOtherStates(element, index, array) {
+  if (element.state !== "WI" && element.state !== "IL" && element.state !== "WY" && element.state !== "OH" && element.state !== "GA" && element.state !== "DE") {
+    return element;
+  }
+}
+let otherStates = dataset.bankBalances.filter(getOtherStates);
+console.log("otherStates: ", otherStates);
+
+let stateSum = {};
+otherStates.forEach(element => {
+  if (!stateSum.hasOwnProperty(element.state)) {
+    stateSum[element.state] = Math.round((Number(element.amount) * 0.189) * 100) / 100;
+  }
+  else {
+    stateSum[element.state] = Math.round((stateSum[element.state] + Number(element.amount) * 0.189) * 100) / 100;
+  }
+})
+console.log("stateSum: ", stateSum);
+console.log(Object.values(stateSum));
+stateSumValues = Object.values(stateSum);
+let highInterestValues = stateSumValues.filter(element => {
+  return element > 50000;
+})
+console.log("highInterestValues: ", highInterestValues);
+sumOfHighInterests = highInterestValues.reduce((previousValue, currentValue) => {
+  return Math.round((previousValue + currentValue) * 100) / 100;
+})
+console.log("sumOfHighInterest: ", sumOfHighInterests);
+
+
+
 
 
 
