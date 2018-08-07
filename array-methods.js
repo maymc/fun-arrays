@@ -357,7 +357,9 @@ console.log("areStatesInHigherStateSum?: ", areStatesInHigherStateSum);
   otherwise set it to be `false`
  */
 var anyStatesInHigherStateSum = null;
-
+anyStatesInHigherStateSum = sixStates.some(element => {
+  return element[1] > 2550000;
+})
 
 module.exports = {
   hundredThousandairs: hundredThousandairs,
