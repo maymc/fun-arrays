@@ -127,16 +127,6 @@ let sumOfOH = 0;
 let sumOfGA = 0;
 let sumOfDE = 0;
 
-// function getStates(element, index, array) {
-//   if (dataset.bankBalances[index].state === "WI" || dataset.bankBalances[index].state === "IL" || dataset.bankBalances[index].state === "WY" || dataset.bankBalances[index].state === "OH" || dataset.bankBalances[index].state === "GA" || dataset.bankBalances[index].state === "DE") {
-//     return element;
-//   }
-// }
-
-// let filteredStates = dataset.bankBalances.filter(getStates);
-// console.log("filtered states: ", filteredStates);
-
-
 dataset.bankBalances.forEach(element => {
   if (element.state === "WI") {
     console.log(element);
@@ -177,8 +167,7 @@ dataset.bankBalances.forEach(element => {
 
 });
 
-console.log("sums of each state: ", sumOfWI, sumOfIL, sumOfWY, sumOfOH, sumOfGA, sumOfDE)
-  ;
+console.log("sums of each state: ", sumOfWI, sumOfIL, sumOfWY, sumOfOH, sumOfGA, sumOfDE);
 sumOfInterests = sumOfWI + sumOfIL + sumOfOH + sumOfWY + sumOfDE + sumOfGA;
 console.log("sumOfInterests: ", sumOfInterests);
 
