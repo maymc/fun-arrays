@@ -329,6 +329,18 @@ higherStateSums = higherFilteredValues.reduce((previousValue, currentValue) => {
   otherwise set it to `false`
  */
 var areStatesInHigherStateSum = null;
+let sixStates = stateSumsArr.filter(element => {
+  if (element[0] === "WI" || element[0] === "IL" || element[0] === "WY" || element[0] === "OH" || element[0] === "GA" || element[0] === "DE") {
+    return element;
+  }
+});
+console.log("sixStates: ", sixStates);
+
+areStatesInHigherStateSum = sixStates.every(element => {
+  return element[1] > 2550000;
+})
+console.log("areStatesInHigherStateSum?: ", areStatesInHigherStateSum);
+
 
 /*
   Stretch Goal && Final Boss
