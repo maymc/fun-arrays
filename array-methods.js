@@ -297,6 +297,21 @@ console.log("lowerSumStates: ", lowerSumStates);
   `higherStateSums` should be the sum of all states with totals greater than 1,000,000
  */
 var higherStateSums = null;
+let higherFiltered = stateSumsArr.filter(element => {
+  if (element[1] > 1000000) {
+    return element;
+  }
+});
+console.log("higherFiltered: ", higherFiltered);
+let higherFilteredValues = [];
+higherFiltered.forEach(element => {
+  higherFilteredValues.push(element[1]);
+})
+console.log("higherFilteredValues: ", higherFilteredValues);
+higherStateSums = higherFilteredValues.reduce((previousValue, currentValue) => {
+  return previousValue + currentValue;
+});
+
 
 /*
   from each of the following states:
