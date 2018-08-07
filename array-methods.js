@@ -208,7 +208,7 @@ dataset.bankBalances.forEach(element => {
     stateSums[element.state] = Math.round((stateSums[element.state] + Number(element.amount)) * 100) / 100;
   }
 })
-console.log(stateSums);
+console.log("stateSums: ", stateSums);
 
 /*
   for all states *NOT* in the following states:
@@ -256,9 +256,9 @@ console.log("stateSumValues: ", stateSumValues);
 
 let highInterestValues = [];
 stateSumValues.forEach(element => {
-  console.log("Here: ", element * 0.189);
+  // console.log("Here: ", element * 0.189);
   element = Math.round(element * 0.189 * 100) / 100;
-  console.log("NOW: ", element);
+  // console.log("NOW: ", element);
   if (element > 50000) {
     highInterestValues.push(element);
   }
@@ -270,17 +270,27 @@ sumOfHighInterests = highInterestValues.reduce((previousValue, currentValue) => 
 console.log("sumOfHighInterest: ", sumOfHighInterests);
 
 
-
-
-
-
-
 /*
   set `lowerSumStates` to be an array of two letter state
   abbreviations of each state where the sum of amounts
   in the state is less than 1,000,000
  */
 var lowerSumStates = null;
+lowerSumStates = [];
+console.log(Object.entries(stateSums));
+let stateSumsArr = Object.entries(stateSums);
+let lowerFiltered = stateSumsArr.filter(element => {
+  // console.log(element[0]);
+  // console.log(element[1]);
+  if (element[1] < 1000000) {
+    return element;
+  }
+});
+console.log("lowerFiltered: ", lowerFiltered);
+lowerFiltered.forEach(element => {
+  lowerSumStates.push(element[0]);
+});
+console.log("lowerSumStates: ", lowerSumStates);
 
 /*
   aggregate the sum of each state into one hash table
