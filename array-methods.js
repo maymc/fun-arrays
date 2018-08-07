@@ -242,17 +242,26 @@ console.log("otherStates: ", otherStates);
 let stateSum = {};
 otherStates.forEach(element => {
   if (!stateSum.hasOwnProperty(element.state)) {
-    stateSum[element.state] = Math.round((Number(element.amount) * 0.189) * 100) / 100;
+    stateSum[element.state] = Number(element.amount);
   }
   else {
-    stateSum[element.state] = Math.round((stateSum[element.state] + Number(element.amount) * 0.189) * 100) / 100;
+    stateSum[element.state] += Number(element.amount);
   }
 })
+
 console.log("stateSum: ", stateSum);
 console.log(Object.values(stateSum));
 stateSumValues = Object.values(stateSum);
-let highInterestValues = stateSumValues.filter(element => {
-  return element > 50000;
+console.log("stateSumValues: ", stateSumValues);
+
+let highInterestValues = [];
+stateSumValues.forEach(element => {
+  console.log("Here: ", element * 0.189);
+  element = Math.round(element * 0.189 * 100) / 100;
+  console.log("NOW: ", element);
+  if (element > 50000) {
+    highInterestValues.push(element);
+  }
 })
 console.log("highInterestValues: ", highInterestValues);
 sumOfHighInterests = highInterestValues.reduce((previousValue, currentValue) => {
